@@ -1,9 +1,10 @@
-﻿using UnityEngine.Audio;
+using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+	// Holds all sounds used in game (theme song, collisions, level complete)
 	public Sound[] sounds;
 
 	public static AudioManager instance;
@@ -24,6 +25,8 @@ public class AudioManager : MonoBehaviour
 
 		foreach (Sound s in sounds)
 		{
+			// Enables controls in the Unity Editor for specific parameters of each sound 
+			// Volume, pitch, clip length, and looping (on or off)
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.volume = s.volume;
@@ -32,6 +35,7 @@ public class AudioManager : MonoBehaviour
 		}
     }
 
+	//Plays theme music on game start with looping enabled
 	void Start ()
 	{
 		Play("Theme");
